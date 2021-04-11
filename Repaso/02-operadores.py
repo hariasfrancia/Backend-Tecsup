@@ -46,4 +46,4 @@ print(5 != 4)
 print(10 > 5)
 
 # >=, <=, es mayor o igual, es menor o igual
-prin
+print(10 >= 10)
