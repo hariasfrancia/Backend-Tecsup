@@ -29,7 +29,7 @@ class CategoriaModel(models.Model):
         verbose_name_plural = 'categoria' #visualizar el modelo en plural en el PA
 
 class ProductoModel(models.Model):
-    producotId = models.AutoField( #AutoField es autoincrementable, y solamente una tabla debe tener ese campo
+    productoId = models.AutoField( #AutoField es autoincrementable, y solamente una tabla debe tener ese campo
         primary_key = True,
         unique = True,
         null = False,
@@ -38,13 +38,15 @@ class ProductoModel(models.Model):
     productoNombre = models.CharField(
         db_column = 'nombre',
         help_text = 'Nombre del producto',
-        max_length = 45
+        max_length = 45,
+        verbose_name = 'nombre'
     )
     productoPrecio = models.DecimalField(
         max_digits = 4,
         decimal_places = 2,
         db_column = 'precio',
         help_text = 'precio del producto',
+        verbose_name = 'precio del producto'
     )
     productoDescripcion = models.TextField(
         db_column = 'descripcion'
@@ -53,6 +55,10 @@ class ProductoModel(models.Model):
         db_column = 'cantidad',
         null = False,
     )
+    
+    def __str__(self):
+        return "{} de {} unidad(es)".format(self.productoNombre, self.productoCantidad)
+
     # PARA HACER LAS RELACIONES:
     # Opciones para eliminar al Padre:
     # CASCADE = permite eliminar al padre y consecuentemente eliminar a los hijos
