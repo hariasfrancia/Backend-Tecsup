@@ -18,3 +18,7 @@ class ListarCategoriaController(ListCreateAPIView):
 class CRUDCategoriaController(RetrieveDestroyAPIView):
     queryset = CategoriaModel.objects.all()
     serializer_class = MostrarCategoriasSerializer
+    def get(self, request, pk):
+        # print(pk)
+        print(self.get_queryset().filter(categoriaId=pk)):
+        return Response 'ok'
